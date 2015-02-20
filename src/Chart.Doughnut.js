@@ -17,13 +17,13 @@
 		segmentStrokeWidth : 2,
 
 		//The percentage of the chart that we cut out of the middle.
-		percentageInnerCutout : 50,
+		percentageInnerCutout : 80,
 
 		//Number - Amount of animation steps
 		animationSteps : 100,
 
 		//String - Animation easing effect
-		animationEasing : "easeOutBounce",
+		animationEasing : "linear",
 
 		//Boolean - Whether we animate the rotation of the Doughnut
 		animateRotate : true,
