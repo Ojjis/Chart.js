@@ -43,7 +43,7 @@
 			animationSteps: 60,
 
 			// String - Animation easing effect
-			animationEasing: "easeOutQuart",
+			animationEasing: "linear",
 
 			// Boolean - If we should show the scale at all
 			showScale: true,
@@ -96,7 +96,7 @@
 			maintainAspectRatio: true,
 
 			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
-			showTooltips: true,
+			showTooltips: false,
 
 			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
 			customTooltips: false,
@@ -529,7 +529,7 @@
 			easeInOutQuart: function (t) {
 				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
 				return -1 / 2 * ((t -= 2) * t * t * t - 2);
-			},
+			}/*,
 			easeInQuint: function (t) {
 				return 1 * (t /= 1) * t * t * t * t;
 			},
@@ -642,7 +642,7 @@
 			easeInOutBounce: function (t) {
 				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
 				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
-			}
+			}*/
 		},
 		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
 		requestAnimFrame = helpers.requestAnimFrame = (function(){
@@ -825,7 +825,9 @@
 		},
 		stop : function(){
 			// Stops any current animation loop occuring
-			helpers.cancelAnimFrame(this.animationFrame);
+			if(this.animationFrame){
+				helpers.cancelAnimFrame.call(root, this.animationFrame);
+			}
 			return this;
 		},
 		resize : function(callback){
